@@ -1,1 +1,20 @@
-
+<!doctype html><meta charset="utf-8"><title>log</title>
+<pre id="o"></pre>
+<button id="dl">download log</button>
+<script>
+const o = document.getElementById('o');
+function rd(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } }
+const data = {
+  last: rd('void_last'),
+  crashes: rd('void_crashes') || [],
+  events: rd('void_events') || []
+};
+o.textContent = JSON.stringify(data, null, 2);
+document.getElementById('dl').onclick = function(){
+  const b = new Blob([o.textContent], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(b);
+  a.download = 'void-log-' + Date.now() + '.json';
+  a.click();
+};
+                     </script>
