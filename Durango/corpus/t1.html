@@ -1,1 +1,9 @@
-
+<!doctype html><script>
+  function getX(o) { return o.x; }
+  var a = {x: 1.1};
+  var b = {x: {}};
+  // Prisiljavamo JIT da optimizuje funkciju za brojeve, pa mu podvalimo objekat
+  for(var i=0; i<200000; i++) { getX(a); }
+  getX(b); 
+  document.body.innerHTML = "t1 passed";
+</script>
