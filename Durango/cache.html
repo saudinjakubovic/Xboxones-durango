@@ -1,1 +1,13 @@
-
+<!doctype html><meta charset="utf-8"><title>cache</title>
+<pre id="o">warming...</pre>
+<script>
+if (!('serviceWorker' in navigator)) {
+  document.getElementById('o').textContent = 'NO SERVICE WORKER — legacy engine';
+} else {
+  navigator.serviceWorker.register('./sw.js').then(function(){
+    document.getElementById('o').textContent = 'SW OK, cache warm. Ugasi net i reloadaj runner.';
+  }).catch(function(e){
+    document.getElementById('o').textContent = 'SW fail: ' + e;
+  });
+}
+</script>
