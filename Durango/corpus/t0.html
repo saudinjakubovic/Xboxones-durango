@@ -1,1 +1,9 @@
-
+<!doctype html><script>
+  var ab = new ArrayBuffer(1024);
+  var dv = new DataView(ab);
+  // Namjerno pišemo van granica bafera
+  for(var i=-5000; i<50000; i++) {
+    try { dv.setUint32(i, 0x41414141); } catch(e) {}
+  }
+  document.body.innerHTML = "t0 passed";
+    </script>
