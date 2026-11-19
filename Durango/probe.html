@@ -1,1 +1,15 @@
-
+<!doctype html><meta charset="utf-8"><title>probe</title>
+<pre id="o">...</pre>
+<script>
+var d = {
+  ua: navigator.userAgent,
+  uad: navigator.userAgentData ? 'chromium' : 'legacy',
+  wasm: typeof WebAssembly,
+  sw: 'serviceWorker' in navigator,
+  edge: (/Edge\/([\d.]+)/.exec(navigator.userAgent)||[])[1] || null,
+  edg_new: (/Edg\/([\d.]+)/.exec(navigator.userAgent)||[])[1] || null,
+  chrome: (/Chrome\/([\d.]+)/.exec(navigator.userAgent)||[])[1] || null,
+  ab: typeof ArrayBuffer, dv: typeof DataView
+};
+document.getElementById('o').textContent = JSON.stringify(d, null, 2);
+</script>
